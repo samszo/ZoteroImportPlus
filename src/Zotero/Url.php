@@ -57,6 +57,32 @@ class Url
             $this->id, $this->getParams($params));
     }
 
+
+    //Ajout samszo
+    /**
+     * The set of all items in the library
+     *
+     * @param string    $zKey
+     * @param array     $params
+     * @return string
+     */
+    public function itemTags($zKey, array $params = [])
+    {
+        return sprintf('%s/%s/%s/items/%s/tags%s', self::BASE, $this->type,
+            $this->id, $zKey, $this->getParams($params));
+    }
+
+    /**
+     * récupère l'identifiant de l'utilisateur
+     *
+     * @return string
+     */
+    public function id()
+    {
+        return $this->id;
+    }
+    //fin ajout
+
     /**
      * The URL to an item file.
      *

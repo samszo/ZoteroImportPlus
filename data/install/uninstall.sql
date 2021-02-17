@@ -1,0 +1,4 @@
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE zotero_import;
+DROP TABLE zotero_import_item;
+SET FOREIGN_KEY_CHECKS=1;

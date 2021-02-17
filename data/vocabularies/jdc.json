@@ -1,0 +1,10 @@
+{"vocabulary" : {
+    "o:namespace_uri" : "https://jardindesconnaissances.univ-paris8.fr/onto/jdc#",
+    "o:prefix" : "jdc",
+    "o:label" : "Jardin des connaissances", 
+    "o:comment" : "Pour gérer les écosystèmes de connaissancess"
+},
+"strategy":"file",
+"file" : "jdc.ttl",
+"format" : "turtle"
+}

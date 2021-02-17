@@ -26,6 +26,7 @@ class ZoteroImport extends AbstractEntity
      *     onDelete="CASCADE"
      * )
      */
+
     protected $job;
     /**
      * @OneToOne(

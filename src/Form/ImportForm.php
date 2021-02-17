@@ -30,7 +30,7 @@ class ImportForm extends Form
             'name' => 'type',
             'type' => Element\Radio::class,
             'options' => [
-                'label' => 'Library Type',  // @translate
+                'label' =>  'Library Type',  // @translate
                 'info' => 'Required. Is this a user or group library?', // @translate
                 'value_options' => [
                     'user' => 'User', // @translate
@@ -101,6 +101,19 @@ class ImportForm extends Form
             ],
             'attributes' => [
                 'id' => 'added-after',
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'addedBefore',
+            'type' => Element\DateTimeLocal::class,
+            'options' => [
+                'format' => 'Y-m-d\TH:i',
+                'label' => 'Added before', // @translate
+                'info' => 'Only import items that have been added to Zotero before this datetime.', // @translate
+            ],
+            'attributes' => [
+                'id' => 'added-before',
             ],
         ]);
 
@@ -188,5 +201,11 @@ class ImportForm extends Form
             'name' => 'addedAfter',
             'required' => false,
         ]);
+
+        $inputFilter->add([
+            'name' => 'addedBefore',
+            'required' => false,
+        ]);
+
     }
 }

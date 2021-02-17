@@ -36,20 +36,31 @@ class IndexController extends AbstractActionController
             if ($form->isValid()) {
                 $data = $form->getData();
                 $timestamp = 0;
+                $n = new DateTime();
+                $timestampBefore = $n->format('U');
                 if ($data['addedAfter']) {
                     $addedAfter = new DateTime($data['addedAfter'],
                         new DateTimeZone('UTC'));
                     $timestamp = (int) $addedAfter->format('U');
                 }
+                if ($data['addedBefore']) {
+                    $addedBefore = new DateTime($data['addedBefore'],
+                        new DateTimeZone('UTC'));
+                    $timestampBefore = (int) $addedBefore->format('U');
+                }
                 $args = [
-                    'itemSet' => $data['itemSet'],
-                    'type' => $data['type'],
-                    'id' => $data['id'],
+                    'itemSet'       => $data['itemSet'],
+                    'type'          => $data['type'],
+                    'id'            => $data['id'],
                     'collectionKey' => $data['collectionKey'],
-                    'apiKey' => $data['apiKey'],
-                    'importFiles' => $data['importFiles'],
-                    'version' => 0,
-                    'timestamp' => $timestamp,
+                    'apiKey'        => $data['apiKey'],
+                    'importFiles'   => $data['importFiles'],
+                    'version'       => 0,                    
+                    'timestamp'     => $timestamp,
+                    //ajout samszo
+                    'username'          => "anonyme",
+                    'timestampBefore'   => $timestampBefore,
+                    //fin ajout
                 ];
 
                 if ($args['apiKey'] && !$this->apiKeyIsValid($args)) {
@@ -66,6 +77,9 @@ class IndexController extends AbstractActionController
                             'o-module-zotero_import:url' => $body[0]['library']['links']['alternate']['href'],
                         ])->getContent();
                         $args['import'] = $import->id();
+                        //ajout samszo
+                        $args['username'] = $body[0]['library']['name'];
+                        //fin ajout
                         $job = $this->jobDispatcher()->dispatch(Job\Import::class, $args);
                         $this->api()->update('zotero_imports', $import->id(), [
                             'o:job' => ['o:id' => $job->getId()],
@@ -176,6 +190,7 @@ class IndexController extends AbstractActionController
         }
         return false;
     }
+
 
     /**
      * Send a Zotero API request.

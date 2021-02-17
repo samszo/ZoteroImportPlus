@@ -1,0 +1,10 @@
+{"vocabulary" : {
+    "o:namespace_uri" : "http://purl.org/spar/cito",
+    "o:prefix" : "cito",
+    "o:label" : "cito", 
+    "o:comment" : "Pour gérer les citations"
+},
+"strategy":"file",
+"file" : "cito.ttl",
+"format" : "turtle"
+}
