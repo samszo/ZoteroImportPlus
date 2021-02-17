@@ -1,13 +1,13 @@
 <?php
-namespace ZoteroImport\Api\Representation;
+namespace ZoteroImportPlus\Api\Representation;
 
 use Omeka\Api\Representation\AbstractEntityRepresentation;
 
-class ZoteroImportItemRepresentation extends AbstractEntityRepresentation
+class ZoteroImportPlusItemRepresentation extends AbstractEntityRepresentation
 {
     public function getJsonLdType()
     {
-        return 'o-module-zotero_import:ZoteroImportItem';
+        return 'o-module-zotero_import:ZoteroImportPlusItem';
     }
 
     public function getJsonLd()

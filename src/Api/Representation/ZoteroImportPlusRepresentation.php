@@ -1,9 +1,9 @@
 <?php
-namespace ZoteroImport\Api\Representation;
+namespace ZoteroImportPlus\Api\Representation;
 
 use Omeka\Api\Representation\AbstractEntityRepresentation;
 
-class ZoteroImportRepresentation extends AbstractEntityRepresentation
+class ZoteroImportPlusRepresentation extends AbstractEntityRepresentation
 {
     public function getControllerName()
     {
@@ -12,7 +12,7 @@ class ZoteroImportRepresentation extends AbstractEntityRepresentation
 
     public function getJsonLdType()
     {
-        return 'o-module-zotero_import:ZoteroImport';
+        return 'o-module-zotero_import:ZoteroImportPlus';
     }
 
     public function getJsonLd()

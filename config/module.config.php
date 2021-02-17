@@ -1,11 +1,11 @@
 <?php
-namespace ZoteroImport;
+namespace ZoteroImportPlus;
 
 return [
     'api_adapters' => [
         'invokables' => [
-            'zotero_imports' => Api\Adapter\ZoteroImportAdapter::class,
-            'zotero_import_items' => Api\Adapter\ZoteroImportItemAdapter::class,
+            'zotero_imports' => Api\Adapter\ZoteroImportPlusAdapter::class,
+            'zotero_import_items' => Api\Adapter\ZoteroImportPlusItemAdapter::class,
         ],
     ],
     'entity_manager' => [
@@ -18,7 +18,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            'ZoteroImport\Controller\Index' => Service\IndexControllerFactory::class,
+            'ZoteroImportPlus\Controller\Index' => Service\IndexControllerFactory::class,
         ],
     ],
     'view_manager' => [
@@ -31,19 +31,19 @@ return [
             [
                 'label'      => 'Zotero Import', // @translate
                 'route'      => 'admin/zotero-import',
-                'resource'   => 'ZoteroImport\Controller\Index',
+                'resource'   => 'ZoteroImportPlus\Controller\Index',
                 'pages'      => [
                     [
                         'label' => 'Import', // @translate
                         'route'    => 'admin/zotero-import',
                         'action' => 'import',
-                        'resource' => 'ZoteroImport\Controller\Index',
+                        'resource' => 'ZoteroImportPlus\Controller\Index',
                     ],
                     [
                         'label' => 'Past Imports', // @translate
                         'route'    => 'admin/zotero-import/default',
                         'action' => 'browse',
-                        'resource' => 'ZoteroImport\Controller\Index',
+                        'resource' => 'ZoteroImportPlus\Controller\Index',
                     ],
                 ],
             ],
@@ -58,7 +58,7 @@ return [
                         'options' => [
                             'route' => '/zotero-import',
                             'defaults' => [
-                                '__NAMESPACE__' => 'ZoteroImport\Controller',
+                                '__NAMESPACE__' => 'ZoteroImportPlus\Controller',
                                 'controller' => 'index',
                                 'action' => 'import',
                             ],

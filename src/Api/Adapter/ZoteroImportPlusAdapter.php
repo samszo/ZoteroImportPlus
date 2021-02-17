@@ -1,12 +1,12 @@
 <?php
-namespace ZoteroImport\Api\Adapter;
+namespace ZoteroImportPlus\Api\Adapter;
 
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Request;
 use Omeka\Entity\EntityInterface;
 use Omeka\Stdlib\ErrorStore;
 
-class ZoteroImportAdapter extends AbstractEntityAdapter
+class ZoteroImportPlusAdapter extends AbstractEntityAdapter
 {
     public function getResourceName()
     {
@@ -15,12 +15,12 @@ class ZoteroImportAdapter extends AbstractEntityAdapter
 
     public function getRepresentationClass()
     {
-        return \ZoteroImport\Api\Representation\ZoteroImportRepresentation::class;
+        return \ZoteroImportPlus\Api\Representation\ZoteroImportRepresentation::class;
     }
 
     public function getEntityClass()
     {
-        return \ZoteroImport\Entity\ZoteroImport::class;
+        return \ZoteroImportPlus\Entity\ZoteroImport::class;
     }
 
     public function hydrate(Request $request, EntityInterface $entity,

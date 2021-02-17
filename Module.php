@@ -1,5 +1,5 @@
 <?php
-namespace ZoteroImport;
+namespace ZoteroImportPlus;
 
 
 if (!class_exists(\Generic\AbstractModule::class)) {
@@ -90,7 +90,7 @@ class Module extends AbstractModule
                     $adapter = $event->getTarget();
                     $importItemAlias = $adapter->createAlias();
                     $qb->innerJoin(
-                        \ZoteroImport\Entity\ZoteroImportItem::class, $importItemAlias,
+                        \ZoteroImportPlus\Entity\ZoteroImportPlusItem::class, $importItemAlias,
                         'WITH', "$importItemAlias.item = omeka_root.id"
                     )->andWhere($qb->expr()->eq(
                         "$importItemAlias.import",

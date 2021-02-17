@@ -1,5 +1,5 @@
 <?php
-namespace ZoteroImport\Controller;
+namespace ZoteroImportPlus\Controller;
 
 use DateTime;
 use DateTimeZone;
@@ -9,9 +9,9 @@ use Laminas\Http\Client;
 use Laminas\Http\Response;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
-use ZoteroImport\Form\ImportForm;
-use ZoteroImport\Job;
-use ZoteroImport\Zotero\Url;
+use ZoteroImportPlus\Form\ImportForm;
+use ZoteroImportPlus\Job;
+use ZoteroImportPlus\Zotero\Url;
 
 class IndexController extends AbstractActionController
 {

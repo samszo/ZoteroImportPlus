@@ -1,5 +1,5 @@
 <?php
-namespace ZoteroImport\Job;
+namespace ZoteroImportPlus\Job;
 
 use Omeka\Api\Exception\NotFoundException;
 use Omeka\Job\AbstractJob;
@@ -15,7 +15,7 @@ class UndoImport extends AbstractJob
         // have to manage the import items, which speeds up item delete.
         $query = $em->createQuery('
         SELECT i.id
-        FROM ZoteroImport\Entity\ZoteroImportItem ii
+        FROM ZoteroImportPlus\Entity\ZoteroImportPlusItem ii
         JOIN ii.item i
         WHERE ii.import = ?1');
         $items = $query->setParameter(1, $this->getArg('import'))->getResult();

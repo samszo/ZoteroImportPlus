@@ -1,8 +1,8 @@
 <?php
-namespace ZoteroImport\Service;
+namespace ZoteroImportPlus\Service;
 
 use Interop\Container\ContainerInterface;
-use ZoteroImport\Controller\IndexController;
+use ZoteroImportPlus\Controller\IndexController;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class IndexControllerFactory implements FactoryInterface

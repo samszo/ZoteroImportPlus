@@ -1,5 +1,5 @@
 <?php
-namespace ZoteroImport\Form;
+namespace ZoteroImportPlus\Form;
 
 use Omeka\Form\Element\ItemSetSelect;
 use Laminas\Form\Element;

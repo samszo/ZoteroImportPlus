@@ -1,6 +1,6 @@
-# ZoteroImport
+# ZoteroImportPlus
 
-Import items from Zotero to Omeka S
+Import items, files, notes and tags from Zotero to Omeka S
 
 See the [Omeka S user manual](http://omeka.org/s/docs/user-manual/modules/zoteroimport/) for user documentation.
 

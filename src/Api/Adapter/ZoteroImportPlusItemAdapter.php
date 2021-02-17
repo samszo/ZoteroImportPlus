@@ -1,5 +1,5 @@
 <?php
-namespace ZoteroImport\Api\Adapter;
+namespace ZoteroImportPlus\Api\Adapter;
 
 use Doctrine\ORM\QueryBuilder;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
@@ -7,7 +7,7 @@ use Omeka\Api\Request;
 use Omeka\Entity\EntityInterface;
 use Omeka\Stdlib\ErrorStore;
 
-class ZoteroImportItemAdapter extends AbstractEntityAdapter
+class ZoteroImportPlusItemAdapter extends AbstractEntityAdapter
 {
     public function getResourceName()
     {
@@ -16,12 +16,12 @@ class ZoteroImportItemAdapter extends AbstractEntityAdapter
 
     public function getRepresentationClass()
     {
-        return \ZoteroImport\Api\Representation\ZoteroImportItemRepresentation::class;
+        return \ZoteroImportPlus\Api\Representation\ZoteroImportPlusItemRepresentation::class;
     }
 
     public function getEntityClass()
     {
-        return \ZoteroImport\Entity\ZoteroImportItem::class;
+        return \ZoteroImportPlus\Entity\ZoteroImportPlusItem::class;
     }
 
     public function hydrate(Request $request, EntityInterface $entity,
