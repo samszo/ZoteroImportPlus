@@ -1,26 +1,26 @@
 <?php
-namespace ZoteroImportPlus\Api\Adapter;
+namespace ZoteroImportplus\Api\Adapter;
 
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Request;
 use Omeka\Entity\EntityInterface;
 use Omeka\Stdlib\ErrorStore;
 
-class ZoteroImportPlusAdapter extends AbstractEntityAdapter
+class ZoteroImportplusAdapter extends AbstractEntityAdapter
 {
     public function getResourceName()
     {
-        return 'zotero_imports';
+        return 'zotero_importplus';
     }
 
     public function getRepresentationClass()
     {
-        return \ZoteroImportPlus\Api\Representation\ZoteroImportRepresentation::class;
+        return \ZoteroImportplus\Api\Representation\ZoteroImportplusRepresentation::class;
     }
 
     public function getEntityClass()
     {
-        return \ZoteroImportPlus\Entity\ZoteroImport::class;
+        return \ZoteroImportplus\Entity\ZoteroImportplus::class;
     }
 
     public function hydrate(Request $request, EntityInterface $entity,
@@ -32,19 +32,19 @@ class ZoteroImportPlusAdapter extends AbstractEntityAdapter
             $job = $this->getAdapter('jobs')->findEntity($data['o:job']['o:id']);
             $entity->setJob($job);
         }
-        if (isset($data['o-module-zotero_import:undo_job']['o:id'])) {
-            $job = $this->getAdapter('jobs')->findEntity($data['o-module-zotero_import:undo_job']['o:id']);
+        if (isset($data['o-module-zotero_importplus:undo_job']['o:id'])) {
+            $job = $this->getAdapter('jobs')->findEntity($data['o-module-zotero_importplus:undo_job']['o:id']);
             $entity->setUndoJob($job);
         }
 
-        if (isset($data['o-module-zotero_import:version'])) {
-            $entity->setVersion($data['o-module-zotero_import:version']);
+        if (isset($data['o-module-zotero_importplus:version'])) {
+            $entity->setVersion($data['o-module-zotero_importplus:version']);
         }
-        if (isset($data['o-module-zotero_import:name'])) {
-            $entity->setName($data['o-module-zotero_import:name']);
+        if (isset($data['o-module-zotero_importplus:name'])) {
+            $entity->setName($data['o-module-zotero_importplus:name']);
         }
-        if (isset($data['o-module-zotero_import:url'])) {
-            $entity->setUrl($data['o-module-zotero_import:url']);
+        if (isset($data['o-module-zotero_importplus:url'])) {
+            $entity->setUrl($data['o-module-zotero_importplus:url']);
         }
     }
 }

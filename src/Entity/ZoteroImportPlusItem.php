@@ -1,5 +1,5 @@
 <?php
-namespace ZoteroImportPlus\Entity;
+namespace ZoteroImportplus\Entity;
 
 use Omeka\Entity\AbstractEntity;
 use Omeka\Entity\Item;
@@ -7,7 +7,7 @@ use Omeka\Entity\Item;
 /**
  * @Entity
  */
-class ZoteroImportPlusItem extends AbstractEntity
+class ZoteroImportplusItem extends AbstractEntity
 {
     /**
      * @Id
@@ -18,7 +18,7 @@ class ZoteroImportPlusItem extends AbstractEntity
 
     /**
      * @ManyToOne(
-     *     targetEntity="ZoteroImportPlus",
+     *     targetEntity="ZoteroImportplus",
      * )
      * @JoinColumn(
      *     nullable=false,
@@ -49,7 +49,7 @@ class ZoteroImportPlusItem extends AbstractEntity
         return $this->id;
     }
 
-    public function setImport(ZoteroImportPlus $import)
+    public function setImport(ZoteroImportplus $import)
     {
         $this->import = $import;
     }

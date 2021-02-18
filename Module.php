@@ -1,5 +1,5 @@
 <?php
-namespace ZoteroImportPlus;
+namespace ZoteroImportplus;
 
 
 if (!class_exists(\Generic\AbstractModule::class)) {
@@ -35,6 +35,15 @@ class Module extends AbstractModule
             $message = new \Omeka\Stdlib\Message(
                 $translator->translate('This module requires the module "%s", version %s or above.'), // @translate
                 'Generic', '3.3.26'
+            );
+            throw new \Omeka\Module\Exception\ModuleCannotInstallException($message);
+        }
+        $module = $services->get('Omeka\ModuleManager')->getModule('Annotate');
+        if ($module && version_compare($module->getIni('version'), '3.3', '<')) {
+            $translator = $services->get('MvcTranslator');
+            $message = new \Omeka\Stdlib\Message(
+                $translator->translate('This module requires the module "%s", version %s or above.'), // @translate
+                'Annotate', '3.3'
             );
             throw new \Omeka\Module\Exception\ModuleCannotInstallException($message);
         }
@@ -85,7 +94,7 @@ class Module extends AbstractModule
             'api.search.query',
             function (Event $event) {
                 $query = $event->getParam('request')->getContent();
-                if (isset($query['zotero_import_id'])) {
+                if (isset($query['zotero_importplus_id'])) {
                     $qb = $event->getParam('queryBuilder');
                     $adapter = $event->getTarget();
                     $importItemAlias = $adapter->createAlias();
@@ -94,7 +103,7 @@ class Module extends AbstractModule
                         'WITH', "$importItemAlias.item = omeka_root.id"
                     )->andWhere($qb->expr()->eq(
                         "$importItemAlias.import",
-                        $adapter->createNamedParameter($qb, $query['zotero_import_id'])
+                        $adapter->createNamedParameter($qb, $query['zotero_importplus_id'])
                     ));
                 }
             }

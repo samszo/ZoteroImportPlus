@@ -1,5 +1,5 @@
 <?php
-namespace ZoteroImportPlus\Zotero;
+namespace ZoteroImportplus\Zotero;
 
 class Url
 {

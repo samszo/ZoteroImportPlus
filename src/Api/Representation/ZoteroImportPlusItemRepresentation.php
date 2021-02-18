@@ -1,26 +1,26 @@
 <?php
-namespace ZoteroImportPlus\Api\Representation;
+namespace ZoteroImportplus\Api\Representation;
 
 use Omeka\Api\Representation\AbstractEntityRepresentation;
 
-class ZoteroImportPlusItemRepresentation extends AbstractEntityRepresentation
+class ZoteroImportplusItemRepresentation extends AbstractEntityRepresentation
 {
     public function getJsonLdType()
     {
-        return 'o-module-zotero_import:ZoteroImportPlusItem';
+        return 'o-module-zotero_importplus:ZoteroImportplusItem';
     }
 
     public function getJsonLd()
     {
         return [
-            'o-module-zotero_import:import' => $this->import()->getReference(),
+            'o-module-zotero_importplus:import' => $this->import()->getReference(),
             'o:item' => $this->job()->getReference(),
         ];
     }
 
     public function import()
     {
-        return $this->getAdapter('zotero_imports')
+        return $this->getAdapter('zotero_importplus')
             ->getRepresentation($this->resource->getImport());
     }
 

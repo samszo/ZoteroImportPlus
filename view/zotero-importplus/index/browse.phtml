@@ -1,7 +1,7 @@
 <?php echo $this->pageTitle($this->translate('Past Zotero Imports')); 
 $this->htmlElement('body')->appendAttribute('class', 'browse');
 $this->htmlElement('body')->appendAttribute('class', 'past-imports');
-$this->headLink()->appendStylesheet($this->assetUrl('css/zoteroimport.css', 'ZoteroImportPlus'));
+$this->headLink()->appendStylesheet($this->assetUrl('css/zoteroimport.css', 'ZoteroImportplus'));
 ?>
 
 <?php if (!$imports): ?>
@@ -62,7 +62,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/zoteroimport.css', 'Zot
         </td>
         <td><?php echo $this->hyperlink(
             $import->importItemCount(),
-            $this->url('admin/default', ['controller' => 'item', 'action' => 'browse'], ['query' => ['zotero_import_id' => $import->id()]])
+            $this->url('admin/default', ['controller' => 'item', 'action' => 'browse'], ['query' => ['zotero_importplus_id' => $import->id()]])
         ); ?></td>
     </tr>
 <?php endforeach; ?>

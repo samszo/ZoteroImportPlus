@@ -1,12 +1,12 @@
 <?php
-namespace ZoteroImport\Job;
+namespace ZoteroImportplus\Job;
 
 use DateTime;
 use Omeka\Job\AbstractJob;
 use Omeka\Job\Exception;
 use Laminas\Http\Client;
 use Laminas\Http\Response;
-use ZoteroImport\Zotero\Url;
+use ZoteroImportplus\Zotero\Url;
 
 class Import extends AbstractJob
 {
@@ -411,8 +411,8 @@ class Import extends AbstractJob
             foreach ($response->getContent() as $zKey => $item) {
                 $importItems[] = [
                     'o:item' => ['o:id' => $item->id()],
-                    'o-module-zotero_import:import' => ['o:id' => $importId],
-                    'o-module-zotero_import:zotero_key' => $zKey,
+                    'o-module-zotero_importplus:import' => ['o:id' => $importId],
+                    'o-module-zotero_importplus:zotero_key' => $zKey,
                 ];
                 //ajout samszo
                 //enregistre l'identifiant du parent d'une note
@@ -429,7 +429,7 @@ class Import extends AbstractJob
             }
             // The ZoteroImportItem entity cascade detaches items, which saves
             // memory during batch create.
-            $this->api->batchCreate('zotero_import_items', $importItems, [], ['continueOnError' => true]);
+            $this->api->batchCreate('zotero_importplus_items', $importItems, [], ['continueOnError' => true]);
         }
 
         //ajout samszo
@@ -450,8 +450,8 @@ class Import extends AbstractJob
             $zKey = $oItemChunk['dcterms:isReferencedBy'][0]['@value'];
             $importItem = [
                     'o:item' => ['o:id' => $id],
-                    'o-module-zotero_import:import' => ['o:id' => $importId],
-                    'o-module-zotero_import:zotero_key' => $zKey,
+                    'o-module-zotero_importplus:import' => ['o:id' => $importId],
+                    'o-module-zotero_importplus:zotero_key' => $zKey,
                 ];
 
             //enregistre l'identifiant du parent d'une note
@@ -468,7 +468,7 @@ class Import extends AbstractJob
             // The ZoteroImportItem entity cascade detaches items, which saves
             // memory during batch create.
             //TODO:compter le nombre de notice et de citation
-            $this->api->create('zotero_import_items', $importItem, [], ['continueOnError' => true]);
+            $this->api->create('zotero_importplus_items', $importItem, [], ['continueOnError' => true]);
 
             // Unset unneeded data to save memory.
             unset($oItemsUpdate[$id]);
@@ -619,10 +619,10 @@ class Import extends AbstractJob
                 $oIds[] = $result;
                 $importItem = [
                     'o:item' => ['o:id' => $oIds[$i]->id()],
-                    'o-module-zotero_import:import' => ['o:id' => $this->idImport],
-                    'o-module-zotero_import:zotero_key' => $tag['tag'],
+                    'o-module-zotero_importplus:import' => ['o:id' => $this->idImport],
+                    'o-module-zotero_importplus:zotero_key' => $tag['tag'],
                 ];
-                $this->api->create('zotero_import_items', $importItem, [], ['continueOnError' => true]);
+                $this->api->create('zotero_importplus_items', $importItem, [], ['continueOnError' => true]);
 
                 //met à jour des concepts enfant narrower
                 if(isset($oIds[($i-1)])){

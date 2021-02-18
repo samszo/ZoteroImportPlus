@@ -1,11 +1,11 @@
 <?php
-namespace ZoteroImportPlus;
+namespace ZoteroImportplus;
 
 return [
     'api_adapters' => [
         'invokables' => [
-            'zotero_imports' => Api\Adapter\ZoteroImportPlusAdapter::class,
-            'zotero_import_items' => Api\Adapter\ZoteroImportPlusItemAdapter::class,
+            'zotero_importplus' => Api\Adapter\ZoteroImportplusAdapter::class,
+            'zotero_importplus_items' => Api\Adapter\ZoteroImportplusItemAdapter::class,
         ],
     ],
     'entity_manager' => [
@@ -18,7 +18,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            'ZoteroImportPlus\Controller\Index' => Service\IndexControllerFactory::class,
+            'ZoteroImportplus\Controller\Index' => Service\IndexControllerFactory::class,
         ],
     ],
     'view_manager' => [
@@ -29,21 +29,21 @@ return [
     'navigation' => [
         'AdminModule' => [
             [
-                'label'      => 'Zotero Import', // @translate
-                'route'      => 'admin/zotero-import',
-                'resource'   => 'ZoteroImportPlus\Controller\Index',
+                'label'      => 'Zotero Import Plus', // @translate
+                'route'      => 'admin/zotero-importplus',
+                'resource'   => 'ZoteroImportplus\Controller\Index',
                 'pages'      => [
                     [
                         'label' => 'Import', // @translate
-                        'route'    => 'admin/zotero-import',
+                        'route'    => 'admin/zotero-importplus',
                         'action' => 'import',
-                        'resource' => 'ZoteroImportPlus\Controller\Index',
+                        'resource' => 'ZoteroImportplus\Controller\Index',
                     ],
                     [
                         'label' => 'Past Imports', // @translate
-                        'route'    => 'admin/zotero-import/default',
+                        'route'    => 'admin/zotero-importplus/default',
                         'action' => 'browse',
-                        'resource' => 'ZoteroImportPlus\Controller\Index',
+                        'resource' => 'ZoteroImportplus\Controller\Index',
                     ],
                 ],
             ],
@@ -53,12 +53,12 @@ return [
         'routes' => [
             'admin' => [
                 'child_routes' => [
-                    'zotero-import' => [
+                    'zotero-importplus' => [
                         'type' => 'Literal',
                         'options' => [
-                            'route' => '/zotero-import',
+                            'route' => '/zotero-importplus',
                             'defaults' => [
-                                '__NAMESPACE__' => 'ZoteroImportPlus\Controller',
+                                '__NAMESPACE__' => 'ZoteroImportplus\Controller',
                                 'controller' => 'index',
                                 'action' => 'import',
                             ],

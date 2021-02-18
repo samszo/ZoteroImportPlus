@@ -1,5 +1,5 @@
 <?php
-namespace ZoteroImportPlus\Api\Adapter;
+namespace ZoteroImportplus\Api\Adapter;
 
 use Doctrine\ORM\QueryBuilder;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
@@ -7,21 +7,21 @@ use Omeka\Api\Request;
 use Omeka\Entity\EntityInterface;
 use Omeka\Stdlib\ErrorStore;
 
-class ZoteroImportPlusItemAdapter extends AbstractEntityAdapter
+class ZoteroImportplusItemAdapter extends AbstractEntityAdapter
 {
     public function getResourceName()
     {
-        return 'zotero_import_items';
+        return 'zotero_importplus_items';
     }
 
     public function getRepresentationClass()
     {
-        return \ZoteroImportPlus\Api\Representation\ZoteroImportPlusItemRepresentation::class;
+        return \ZoteroImportplus\Api\Representation\ZoteroImportplusItemRepresentation::class;
     }
 
     public function getEntityClass()
     {
-        return \ZoteroImportPlus\Entity\ZoteroImportPlusItem::class;
+        return \ZoteroImportplus\Entity\ZoteroImportplusItem::class;
     }
 
     public function hydrate(Request $request, EntityInterface $entity,
@@ -32,12 +32,12 @@ class ZoteroImportPlusItemAdapter extends AbstractEntityAdapter
             $item = $this->getAdapter('items')->findEntity($data['o:item']['o:id']);
             $entity->setItem($item);
         }
-        if (isset($data['o-module-zotero_import:import']['o:id'])) {
-            $import = $this->getAdapter('zotero_imports')->findEntity($data['o-module-zotero_import:import']['o:id']);
+        if (isset($data['o-module-zotero_importplus:import']['o:id'])) {
+            $import = $this->getAdapter('zotero_importplus')->findEntity($data['o-module-zotero_importplus:import']['o:id']);
             $entity->setImport($import);
         }
-        if ($data['o-module-zotero_import:zotero_key']) {
-            $entity->setZoteroKey($data['o-module-zotero_import:zotero_key']);
+        if ($data['o-module-zotero_importplus:zotero_key']) {
+            $entity->setZoteroKey($data['o-module-zotero_importplus:zotero_key']);
         }
     }
 

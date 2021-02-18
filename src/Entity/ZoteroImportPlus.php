@@ -1,5 +1,5 @@
 <?php
-namespace ZoteroImportPlus\Entity;
+namespace ZoteroImportplus\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Omeka\Entity\AbstractEntity;
@@ -8,7 +8,7 @@ use Omeka\Entity\Job;
 /**
  * @Entity
  */
-class ZoteroImportPlus extends AbstractEntity
+class ZoteroImportplus extends AbstractEntity
 {
     /**
      * @Id
@@ -56,7 +56,7 @@ class ZoteroImportPlus extends AbstractEntity
 
     /**
      * @OneToMany(
-     *     targetEntity="ZoteroImportPlusItem",
+     *     targetEntity="ZoteroImportplusItem",
      *     mappedBy="import",
      *     fetch="EXTRA_LAZY"
      * )
